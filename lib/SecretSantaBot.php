@@ -146,7 +146,7 @@ class SecretSantaBot{
         		if( $this->test_mode ) {
         			$output .= "<li> $giver_gravatar <strong>{$giver['name']}</strong> is giving to <strong>{$receiver['name']}</strong> $receiver_gravatar</li>";          			
         		} else {
-        			//mail($giver['email'], $subject, $message, $headers);
+        			mail($giver['email'], $subject, $message, $headers);
         			$output .= "<li>$giver_gravatar Sending email to: <strong>{$giver['email']}</strong>.</li>";
         		}        		
                 
