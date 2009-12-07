@@ -164,7 +164,7 @@ class SecretSantaBot{
             
             
 		} else {
-		  throw new Exception(ERROR_EMAILING_PAIRS);
+		  throw new Exception(self::ERROR_EMAILING_PAIRS);
 		}
     
     }

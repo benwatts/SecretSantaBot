@@ -34,7 +34,7 @@
             <div class="box">
                 <h2>Usage</h2>
                 <ol>
-                    <li>Download the source (github)</li>
+                    <li>Download the source <a href="http://github.com/benwatts/SecretSantaBot">(github)</a></li>
                     <li>Upload to your server. </li>
                     <li>Visit the script in your browser (eg. http://domain.com/secretsantabot/)</li>
                     <li>
@@ -70,16 +70,16 @@
                 
                 <ol id="participant-list">
                     <li>
-                        <input type="text" id="person-1-name" name="person-1[name]" value="Name" class="name text" />
-                        <input type="text" id="person-1-email" name="person-1[email]" value="Email" class="email text" />                
+                        <input type="text" id="person-1-name" name="name[]" value="Name" class="name text" />
+                        <input type="text" id="person-1-email" name="email[]" value="Email" class="email text" />                
                     </li>
                     <li>
-                        <input type="text" id="person-2-name" name="person-2[name]" value="Name" class="name text" />
-                        <input type="text" id="person-2-email" name="person-2[email]" value="Email" class="email text" />                
+                        <input type="text" id="person-2-name" name="name[]" value="Name" class="name text" />
+                        <input type="text" id="person-2-email" name="email[]" value="Email" class="email text" />                
                     </li>
                     <li>
-                        <input type="text" id="person-3-name" name="person-3[name]" value="Name" class="name text" />
-                        <input type="text" id="person-3-email" name="person-3[email]" value="Email" class="email text" />                
+                        <input type="text" id="person-3-name" name="name[]" value="Name" class="name text" />
+                        <input type="text" id="person-3-email" name="email[]" value="Email" class="email text" />                
                     </li>
                 </ol>
                 

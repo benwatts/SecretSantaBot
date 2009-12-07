@@ -41,19 +41,19 @@
     
     
     /** 
-     * Kind of gross. 
-     * Takes everything that's been POSTed, removes anything that doesn't have a key that starts with 'person', then resets the keys. 
+     * No longer gross!
+     * Takes the name[] array and gets the values, along with getting the email[] values :)
      */
     function prepPeopleArray(){
-        $modified_post_array = $_POST;
         
-        foreach($modified_post_array as $key => $val ){
-            if( strpos($key, 'person') === false ){
-                unset($modified_post_array[$key]);    
-            }
+        $people = array();
+        
+        foreach($_POST['name'] as $key => $val){
+            $people[$key]['name'] = $_POST['name'][$key];
+            $people[$key]['email'] = $_POST['email'][$key];
         }
         
-        return array_values($modified_post_array);        
+        return $people;        
     }
     
     

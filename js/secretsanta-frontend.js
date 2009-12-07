@@ -10,7 +10,8 @@
  *
  */
  
-var numberOfInputs; 
+var numberOfInputs,
+	$partList; 
  
 $(document).ready( function(){
 
@@ -19,44 +20,49 @@ $(document).ready( function(){
     $('#send-out-email').click(confirmBeforeSending);
     $('#engage-ssb').live('click', sendEmail);
     
-    numberOfInputs = $('#participant-list li').length; 
+    $partList = $('#participant-list');
+    numberOfInputs = $partList.find('li').length;
+   
     
-    $('#participant-list input.text').each( function(){
+    $partList.find('input.text').each( function(){
         textReplacement($(this));
     });
 });
  
  
- function addExtraInput(){
+function addExtraInput(){
     numberOfInputs++
     var inputNum = numberOfInputs;
 
-    var inputName = '<input type="text" id="person-'+inputNum+'-name" name="person-'+inputNum+'[name]" value="Name" class="name" />';
-    var inputEmail = '<input type="text" id="person-'+inputNum+'-email" name="person-'+inputNum+'[email]" value="Email" class="email" />';
+    var inputName = '<input type="text" id="person-'+inputNum+'-name" name="name[]" value="Name" class="name" />';
+    var inputEmail = '<input type="text" id="person-'+inputNum+'-email" name="email[]" value="Email" class="email" />';
     var removeInput = '<button id="remove-'+inputNum+'" class="remove">remove</button>';
- 
-    $('#participant-list').append('<li>'+inputName+' '+inputEmail+removeInput+'</li>');    
-    $('#participant-list li:last').hide().fadeIn();
+   
+    $partList
+    	.append('<li>'+inputName+' '+inputEmail+removeInput+'</li>')
+    	.find('li:last')
+    	.hide()
+    	.fadeIn()
+    	.find('input')
+    	.each(function(){
+    		textReplacement($(this));
+   		});
     
-    $('#participant-list li:last input').each( function(){ // >> live! 
-        textReplacement($(this));
-    });
-    
-    var removeBtn = $('#participant-list li:last button');
+    var removeBtn = $partList.find('li:last button');
     removeBtn.click(hideExtraInput);
     
     return false;
- }
+}
  
- function hideExtraInput(){
-    $(this).parent().fadeOut('normal', function(){ $(this).remove()} );
+function hideExtraInput(){
+	$(this).parent().fadeOut('normal', function(){ $(this).remove()} );
     return false;
- }
+}
  
  
- function deleteInput(){
-    $(this).remove();
- }
+function deleteInput(){
+	$(this).remove();
+}
  
  
 
@@ -95,9 +101,7 @@ function submitData(mode){
     $('#people #mode').val(mode);
 
     $.post('./lib/frontend.php', $("#people").serialize(), function(data){
-       $('#output').empty();
-       $('#output').append(data);
-       $('#output').hide().fadeIn();
+       $('#output').empty().append(data).hide().fadeIn();
     });
 }
 
